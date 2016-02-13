@@ -20,7 +20,7 @@ int main()
 	char *username = getlogin();
 	if (getlogin() == NULL)
 	{
-		perror("getlogin() failed");
+	   	perror("getlogin() failed");
 	}
 
 	// Grabs user's hostname/machine.
@@ -44,8 +44,8 @@ int main()
 			userinput = userinput.substr(0, commentLoc - 1);
 
 		// Token loop that sets up vector..
-	    char lim[] = " ";
-	    char *contoken;
+		char lim[] = " ";
+		char *contoken;
 		char *savetok;
 		vector<int> split;
 		int counter = 0;
@@ -229,12 +229,11 @@ int main()
 				++concount;
 			}
 
-
-	  }
+	    }
 
 	if (userinput == "exit")	//Temporary
 		break;
-  }
+	}
 
 	return 0;
 }
