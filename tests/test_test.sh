@@ -99,3 +99,30 @@ echo "Only 12 echo messages indicating success should appear"
 exit
 EOF
 
+echo "Testing test cmd with precedence...(Press \"Enter\" to continue..."
+read answer
+
+bin /rshell <<EOF
+echo 1.
+(test -e /bin)
+echo 2.
+([ -e /bin ])
+echo 3.
+(test -e /bin && [ -e /bin ])
+echo 4.
+(test -e /bin || [ -e /bin ])
+echo 5.
+(test -e /bin || test -e /bin) || test -e /bin
+echo 6.
+(test -e /bin && test -e /bin) && test -e /bin
+echo 7.
+(test -e /bin || test -e /bin) && test -e /bin
+echo 8.
+(test -e /bin && test -e /bin) || test -e /bin
+echo 9.
+((test -e /bin || test -e /bin) || test -e /bin)
+echo 10.
+((test -e /bin && test -e /bin) && test -e /bin)
+exit
+EOF
+
